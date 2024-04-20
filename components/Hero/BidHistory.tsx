@@ -56,7 +56,7 @@ export default function BidHistory({
       {(bids?.length ?? 0) > numToShow && (
         <Dialog>
           <DialogTrigger>
-            <h6 className="pt-3  text-white hover:text-primary/50">
+            <h6 className="pt-3  text-white">
               {title}
             </h6>
           </DialogTrigger>
