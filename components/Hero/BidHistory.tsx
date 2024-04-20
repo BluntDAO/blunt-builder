@@ -72,7 +72,7 @@ export default function BidHistory({
                 />
                 <div className="flex flex-col items-start">
                   <h6 className="text-secondary">Bids for</h6>
-                  <h5>Collective Noun #{parseInt(tokenId, 16)}</h5>
+                  <h5>OUNCE #{parseInt(tokenId, 16)}</h5>
                 </div>
               </div>
             </DialogHeader>
