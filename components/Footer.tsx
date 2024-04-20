@@ -42,8 +42,8 @@ export default function Footer() {
       </div>
       <div className="caption text-secondary">
         Made with ❤️ by{" "}
-        <ExternalLink href="https://paperclip.xyz/">
-          Paperclip Labs
+        <ExternalLink href="https://www.blunts.wtf/">
+          Blunt Dao
         </ExternalLink>
       </div>
     </div>
