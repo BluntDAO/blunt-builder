@@ -34,7 +34,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
       <WagmiConfig client={wagmiClient}>
         <RainbowKitProvider chains={chains}>
           <Head>
-            <meta property="og:title" content="blunts DAO" />
+            <meta property="og:title" content="blunt DAO" />
             <meta
               property="og:description"
               content="One Ounce, every day, forever. BluntsDAO is building the unlimited sesh fund to onboard the next million users to Web3, 1 blunt at a time. CC0 on Base."
