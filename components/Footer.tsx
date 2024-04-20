@@ -19,7 +19,7 @@ const navItems = [
     src: "/farcaster.svg",
   },
   {
-    href: "https://t.me/+7VyjGDEf9xI5YzEx ",
+    href: "https://t.me/+7VyjGDEf9xI5YzEx",
     src: "/telegram.svg",
   },
 ];
