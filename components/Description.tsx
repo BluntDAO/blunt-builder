@@ -11,89 +11,35 @@ export default function Description() {
         <div className="bg-white w-full flex justify-center pt-8">
           <div className="max-w-[720px] px-6 w-full flex flex-col gap-4 [&>p]:text-secondary">
             <h2>
-              What is The Yellow Collective and What Are Collective Nouns?
+              The Global Treasury for Seshes
             </h2>
             <p>
-              The Yellow Collective is a new onchain club on the BASE Ethereum
-              L2 network, designed to support and empower artists and creatives
-              in the Nouns and{" "}
-              <ExternalLink href="https://www.coingecko.com/learn/optimism-superchain-interoperability-ethereum">
-                Superchain
-              </ExternalLink>{" "}
-              ecosystems. One Collective Noun will be auctioned off here every
-              day, forever. Auction proceeds will be used to host art contests
-              and pay commissions to creatives in our communities, in
-              collaboration with{" "}
-              <ExternalLink href="https://tns.wtf">
-                The Noun Square Onchain Media Collective
-              </ExternalLink>
-              .
+              BluntDAO is the biggest IRL onboarding movement to Web3 via Proof of Sesh through local IRL OGs.
+              We are now introducing the unlimited sesh fund, a regular re-up mechanism where anyone can request ETH to host a sesh from contributors.
+              Onboarding the next million, 1 blunt/sesh at a time.
+              For 2+ years we have been doing BluntDAO (also JointsDAO & SpliffDAO) for free.
+              Nowin year 3: we are on the path to scale: unlimited sesh. A replenishing treasury for holders to vote on global requests for sesh.
             </p>
-            <video
-              controls
-              className="rounded-3xl border-[4px] border-secondary"
-            >
-              <source src="/yellow-collective-intro-720-3.mp4#t=0.001" />
-            </video>
+
+            <Image src="/blunts-1.jpg" width={"500"} height={"500"} className="rounded-3xl border-[4px] border-secondary" fill={false} alt="" />
+
+            <h2 className="pt-4">
+              Mission
+            </h2>
             <p>
-              Members of The Yellow Collective will coordinate onchain using{" "}
-              <ExternalLink href="https://www.farcaster.xyz">
-                Farcaster
-              </ExternalLink>{" "}
-              and snapshot voting to help decide on contests and other
-              activations to support artists and creators.
-            </p>
-            <p className="font-bold">
-              Minting a Collective Noun is a signal to your network that you
-              love Nouns, that you believe in the power of Ethereum L2s like
-              BASE, Zora and Optimism, and that you are a modern day, onchain,
-              patron of the arts. Plus, they look pretty cool!
-            </p>
-            <p>
-              Oh and, why “Yellow”? Well, because yellow is bright and
-              optimistic, it{"'"}s one of the original brand colors of Nouns
-              DAO, as well as the main logo color for The Noun Square, and the
-              name is also an homage to Purple DAO and all the good they have
-              done for the Farcaster ecosystem. And finally, it{"'"}s just a
-              great meme too! 🟡
+              We make sure blunts get smoked.
+
+              Ask yourself? What does a Blunt want you to do to it? --- Smoke it. And in this essence this is what BluntDAO is living up to. The mission to make sure blunts get smoked. And we use blockchain for stuff.
+              <Image src="/blunts-2.jpg" width={"500"} height={"500"} className="rounded-3xl border-[4px] border-secondary" fill={false} alt="" />
             </p>
             <h2 className="pt-4">
-              Nouns Made By the Community, For the Community
+              Background
             </h2>
             <p>
-              Collective Nouns are made in the image of the original{" "}
-              <ExternalLink href="https://nouns.wtf">Nouns DAO</ExternalLink>,
-              except that all of the Head Traits were drawn by community members
-              at{" "}
-              <ExternalLink href="https://x.com/thenounsquare">
-                The Noun Square
-              </ExternalLink>{" "}
-              in a{" "}
-              <ExternalLink href="https://offchain.prop.house/the-yellow-collective/the-yellow-collective-trait-contest-1:-best-noun-heads">
-                Prop House contest
-              </ExternalLink>
-              .
+              Over 2 years ago, we started started on Solana, with a  simple mission, lets give a NFT to everyone we smoke with IRL and call it Proof of Sesh. We did it for free and went on multiple world tours out of pocket. We smoked thousands of people out with our OG validators, creating more OG validators. We expanded to more than just Blunts, and became SpliffDAO and JointsDAO, and even expanded to other chains. We built account abstracted mechanisms, met the dopest people in Web3, and built community. Although we lived up to the job of making sure Blunts got smoked, the problem is, coordinating a bunch of stoners globally with no incentives and having them do on-chain actions at events is hard, especially when everyone is high. This is why in year 3, we are on the path to scale: unlimited sesh. A replenishing treasury for holders to vote on global requests for sesh.is essence this is what BluntDAO is living up to. The mission to make sure blunts get smoked. And we use blockchain for stuff.
+
             </p>
-            <p>
-              They all sport the same distinctive Yellow Collective Noggles (so
-              that we can always tell they{"'"}re family!) And in lieu of the
-              “warm” and “cool” backgrounds of classic Nouns, Collective Nouns
-              backdrops are either “Based” (light BASE blue) or “Yellow” (light
-              TYC Yellow.) At launch, we{"'"}ve used the bodies and accessories
-              from the original Nouns collection (with a couple Easter Eggs
-              thrown in.) That{"'"}s the power of CC0!
-            </p>
-            <p>
-              Here{"'"}s a fun video we made showing off all 55 inaugural heads,
-              in the style of a cheesy 90{"'"}s Toy Commercial (because why
-              not?)
-            </p>
-            <video
-              controls
-              className="rounded-3xl border-[4px] border-secondary"
-            >
-              <source src="/traits-3.mp4#t=0.001" />
-            </video>
+            <Image src="/blunts-3.jpg" width={"500"} height={"500"} className="rounded-3xl border-[4px] border-secondary" fill={false} alt="" />
           </div>
         </div>
       </div>
