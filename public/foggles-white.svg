@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 1082 406" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="204" width="404" height="406" style="stroke-width: 0px; stroke-opacity: 0.52; fill: rgb(197, 197, 197); opacity: 0.5;"/>
+  <rect y="132" width="685" height="74" style="stroke-width: 0px; stroke-opacity: 0.52; fill: rgb(197, 197, 197); opacity: 0.5;"/>
+  <rect y="132" width="70" height="203" style="stroke-width: 0px; stroke-opacity: 0.52; fill: rgb(197, 197, 197); opacity: 0.5;"/>
+  <rect x="678" width="404" height="406" style="stroke-width: 0px; stroke-opacity: 0.52; fill: rgb(197, 197, 197); opacity: 0.5;"/>
+  <rect x="271" y="188" width="269" height="154" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="#FF8A8A"/>
+  <rect x="743" y="188" width="273" height="154" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="#FF8A8A"/>
+  <rect x="271" y="64" width="269" height="154" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="black"/>
+  <rect x="468" y="205" width="80" height="124" transform="matrix(0, 1, -1, 0, 673.0000000000001, -263)" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="black"/>
+  <rect x="948" y="205" width="80" height="124" transform="matrix(0, 1, -1, 0, 1153, -743)" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="black"/>
+  <rect x="743" y="64" width="273" height="154" style="stroke-width: 0px; stroke-opacity: 0.52;" fill="black"/>
+</svg>
