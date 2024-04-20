@@ -23,17 +23,17 @@ export default function Header() {
 
   return (
     <div className="flex items-center justify-between w-full px-4 md:px-10 py-2 h-[80px] gap-2">
-      <div className="flex flex-row gap-4 md:gap-8 justify-start items-center">
+      <div className="flex flex-row gap-4 md:gap-8 justify-start items-center text-white">
         <Link href="/">
           <Image src="/foggles-white.svg" width={80} height={30} alt="Green" />
         </Link>
-        <Button variant="outline" size="tight">
+        <Button variant="outline" size="tight" className="text-white">
           <Link
             href={`${ETHERSCAN_BASEURL}/tokenholdings?a=${addresses?.treasury}`}
             rel="noreferer noopener noreferrer"
             target="_blank"
           >
-            <h6>
+            <h6 className="text-white">
               Ξ{" "}
               {treasury
                 ? formatNumber(ethers.utils.formatEther(treasury), 2)
@@ -44,9 +44,19 @@ export default function Header() {
             </h6>
           </Link>
         </Button>
+
+        <Link href="https://nouns.build/" >
+          <h6>DAO</h6>
+        </Link>
+        <Link href="/">
+          <h6>Forum</h6>
+        </Link>
+        <Link href="https://docs.bluntdao.org/">
+          <h6>Docs</h6>
+        </Link>
       </div>
 
-      <CustomConnectButton className="bg-green-500 px-6 h-10 rounded-xl border border-skin-stroke text-skin-base transition ease-in-out hover:scale-110" />
+      <CustomConnectButton className="bg-skin-backdrop px-6 h-10 rounded-xl border border-skin-stroke text-skin-base transition ease-in-out hover:scale-110" />
     </div>
   );
 }
