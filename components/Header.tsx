@@ -44,16 +44,17 @@ export default function Header() {
             </h6>
           </Link>
         </Button>
+        
+          <Link href="https://nouns.build/" className="hidden md:block" >
+            <h6>DAO</h6>
+          </Link>
+          <Link href="https://forum.bluntdao.org/" className="hidden md:block">
+            <h6>Forum</h6>
+          </Link>
+          <Link href="https://docs.bluntdao.org/" className="hidden md:block">
+            <h6>Docs</h6>
+          </Link>
 
-        <Link href="https://nouns.build/" >
-          <h6>DAO</h6>
-        </Link>
-        <Link href="/">
-          <h6>Forum</h6>
-        </Link>
-        <Link href="https://docs.bluntdao.org/">
-          <h6>Docs</h6>
-        </Link>
       </div>
 
       <CustomConnectButton className="bg-skin-backdrop px-6 h-10 rounded-xl border border-skin-stroke text-skin-base transition ease-in-out hover:scale-110" />
