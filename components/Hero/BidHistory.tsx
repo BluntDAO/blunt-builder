@@ -19,7 +19,7 @@ function BidRow({ bid, tight }: { bid: Bid; tight: boolean }) {
       <WalletInfo address={bid.bidder} size="sm" />
       <ExternalLink href={`${ETHERSCAN_BASEURL}/tx/${bid.transactionHash}`}>
         <div className="flex flex-row gap-2 items-center hover:opacity-70 transition-opacity">
-          <h6 className="text-primary/70">
+          <h6 className="text-white">
             Ξ {formatNumber(utils.formatEther(bid.bidAmount || "0"), 3)}
           </h6>
           <Image
@@ -56,7 +56,7 @@ export default function BidHistory({
       {(bids?.length ?? 0) > numToShow && (
         <Dialog>
           <DialogTrigger>
-            <h6 className="pt-3  text-primary/70 hover:text-primary/50">
+            <h6 className="pt-3  text-white hover:text-primary/50">
               {title}
             </h6>
           </DialogTrigger>
