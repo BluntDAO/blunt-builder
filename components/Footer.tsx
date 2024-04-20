@@ -7,23 +7,15 @@ import ExternalLink from "./ExternalLink";
 
 const navItems = [
   {
-    href: "https://www.tiktok.com/@thenounsquare",
-    src: "/tiktok.svg",
-  },
-  {
     href: "https://www.instagram.com/thenounsquare",
     src: "/instagram.svg",
   },
   {
-    href: "https://twitter.com/thenounsquare",
+    href: "https://x.com/bluntdao ",
     src: "/x.svg",
   },
   {
-    href: "https://www.youtube.com/channel/UC1Iqmi7SCEzWlWP-huyh9xw",
-    src: "/youtube.svg",
-  },
-  {
-    href: "https://warpcast.com/~/channel/yellow",
+    href: "https://warpcast.com/blunts ",
     src: "/farcaster.svg",
   },
 ];
