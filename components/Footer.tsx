@@ -1,15 +1,8 @@
-import { useTheme } from "@/hooks/useTheme";
-import NavigationItemComponent from "./NavigationItem";
 import Button from "./Button";
 import Image from "next/image";
 import Link from "next/link";
-import ExternalLink from "./ExternalLink";
 
 const navItems = [
-  {
-    href: "https://www.instagram.com/thenounsquare",
-    src: "/instagram.svg",
-  },
   {
     href: "https://x.com/bluntdao",
     src: "/x.svg",
@@ -52,11 +45,16 @@ export default function Footer() {
           </Button>
         ))}
       </div>
-      <div className="caption text-secondary">
+      <div className="caption text-white ">
         Made with ❤️ by{" "}
-        <ExternalLink href="https://www.blunts.wtf/">
+        <Link
+          href={"https://www.blunts.wtf/"}
+          rel="noreferer noopener noreferrer"
+          target="_blank"
+          className="text-white hover:brightness-75"
+        >
           Blunt Dao
-        </ExternalLink>
+        </Link>
       </div>
     </div>
   );
