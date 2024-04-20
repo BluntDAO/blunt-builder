@@ -83,7 +83,7 @@ export const PlaceBid = ({
       <ExternalLink href="https://bridge.base.org/deposit">
         <div className="flex flex-row gap-2">
           <Image src="/info-circle.svg" width={20} height={20} alt="" />
-          <span className="font-bold">Bridge to Base</span>
+          <span className="font-bold text-white">Bridge to Base</span>
         </div>
       </ExternalLink>
       <div className={clsx("flex flex-row flex-wrap gap-4 items-start ")}>
