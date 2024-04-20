@@ -43,7 +43,7 @@ const faqItems: FaqItem[] = [
     ),
   },
   {
-    title: ">Why Throw Down?",
+    title: "Why Throw Down?",
     content: (
       <>
         <ul className="list-disc list-inside pl-4">
