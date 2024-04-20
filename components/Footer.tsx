@@ -11,12 +11,16 @@ const navItems = [
     src: "/instagram.svg",
   },
   {
-    href: "https://x.com/bluntdao ",
+    href: "https://x.com/bluntdao",
     src: "/x.svg",
   },
   {
-    href: "https://warpcast.com/blunts ",
+    href: "https://warpcast.com/blunts",
     src: "/farcaster.svg",
+  },
+  {
+    href: "https://t.me/+7VyjGDEf9xI5YzEx ",
+    src: "/telegram.svg",
   },
 ];
 
