@@ -119,7 +119,7 @@ const ProposalPlacard = ({
   return (
     <Link
       href={`/vote/${proposal.proposalId}`}
-      className="flex items-center justify-between w-full bg-skin-muted hover:bg-skin-backdrop border border-skin-stroke p-4 my-6 rounded-2xl"
+      className="flex items-center justify-between w-full bg-skin-muted hover:bg-green-500 border border-skin-stroke p-4 my-6 rounded-2xl"
     >
       <div className="flex items-center pr-4">
         <div className="text-xl font-semibold text-skin-base">
