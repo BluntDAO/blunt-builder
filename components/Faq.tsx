@@ -39,25 +39,37 @@ const faqItems: FaqItem[] = [
           from anyone) to fund their future sesh.
 
         </p>
-        <h5>Why Throw Down?</h5>
+      </>
+    ),
+  },
+  {
+    title: ">Why Throw Down?",
+    content: (
+      <>
         <ul className="list-disc list-inside pl-4">
           <li>
-          Forever reup our treasury with ounce for sesh
+            Forever reup our treasury with ounce for sesh
           </li>
           <li>
-          Ownership gets you to decide the future of expansion in future seshes
+            Ownership gets you to decide the future of expansion in future seshes
           </li>
         </ul>
-        <h5>Objectives</h5>
+      </>
+    ),
+  },
+  {
+    title: "Objectives",
+    content: (
+      <>
         <ul className="list-disc list-inside pl-4">
           <li>
-          Create a self sustaining treasury for unlimited joints, blunts, other stick based items based on NFT ownership
+            Create a self sustaining treasury for unlimited joints, blunts, other stick based items based on NFT ownership
           </li>
           <li>
-          Build staple for culture and be a safety net and schelling points for stoners globally
+            Build staple for culture and be a safety net and schelling points for stoners globally
           </li>
           <li>
-          Build brand, gain revenue with other partnerships
+            Build brand, gain revenue with other partnerships
           </li>
         </ul>
       </>
