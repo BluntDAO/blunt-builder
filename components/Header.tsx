@@ -46,7 +46,7 @@ export default function Header() {
         </Button>
       </div>
 
-      <CustomConnectButton className="bg-skin-backdrop px-6 h-10 rounded-xl border border-skin-stroke text-skin-base transition ease-in-out hover:scale-110" />
+      <CustomConnectButton className="bg-green-500 px-6 h-10 rounded-xl border border-skin-stroke text-skin-base transition ease-in-out hover:scale-110" />
     </div>
   );
 }
