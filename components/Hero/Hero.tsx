@@ -76,7 +76,7 @@ export default function Hero() {
           )}
         />
       </div>
-      <div className="flex flex-col gap-6 max-w-full overflow-hidden">
+      <div className="flex flex-col gap-6 max-w-full overflow-hidden text-white">
         <div className="flex items-center mb-4 gap-4">
           <Button
             variant="secondary"
