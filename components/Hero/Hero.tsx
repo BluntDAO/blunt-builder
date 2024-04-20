@@ -96,7 +96,7 @@ export default function Hero() {
           </Button>
         </div>
 
-        <h1>Collective Noun #{parseInt(tokenId, 16)}</h1>
+        <h1>OUNCE #{parseInt(tokenId, 16)}</h1>
 
         <CurrentAuction
           auctionInfo={auctionInfo}
