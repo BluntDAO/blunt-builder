@@ -128,7 +128,7 @@ export default function SiteComponent({
         },
       }}
     >
-      <div className="bg-green-500 min-h-screen flex flex-col items-center justify-start w-screen">
+      <div className="bg-green-500 min-h-screen flex flex-col items-center justify-start w-screen bg-[url('/bg-blunt.png')]" >
         <Banner />
         <Header />
         <Hero />
