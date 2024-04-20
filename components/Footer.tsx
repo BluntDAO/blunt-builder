@@ -22,6 +22,18 @@ const navItems = [
     href: "https://t.me/+7VyjGDEf9xI5YzEx",
     src: "/telegram.svg",
   },
+  {
+    href: "https://bluntdao.org/discord",
+    src: "/discord.svg",
+  },
+  {
+    href: "https://instagram.com/bluntdao",
+    src: "/instagram.svg",
+  },
+  {
+    href: "https://github.com/bluntdao",
+    src: "/github.svg",
+  },
 ];
 
 export default function Footer() {
