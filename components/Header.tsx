@@ -48,7 +48,7 @@ export default function Header() {
             </Link>
           </Button>
 
-          <Link target="_blank" rel="noreferrer" href="https://nouns.build/">
+          <Link href="/vote">
             <h6>DAO</h6>
           </Link>
           <Link
@@ -113,7 +113,7 @@ export default function Header() {
             </Link>
           </Button>
 
-          <Link target="_blank" rel="noreferrer" href="https://nouns.build/">
+          <Link href="/vote">
             <h6>DAO</h6>
           </Link>
           <Link
