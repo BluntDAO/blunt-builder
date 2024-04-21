@@ -128,13 +128,23 @@ export default function SiteComponent({
         },
       }}
     >
-      <div className="bg-green-500 min-h-screen flex flex-col items-center justify-start w-screen bg-[url('/bg-blunt.png')]" >
-        <Banner />
-        <Header />
-        <Hero />
+      <div className="bg-green-500 min-h-screen flex flex-col items-center justify-start w-screen">
+        <div className="bg-opacity-90 shadow-md flex flex-col items-center justify-start w-screen bg-cover bg-[url('/bg-blunt.png')]">
+          <Banner />
+          <Header />
+          <Hero />
+          <div className="w-full h-[60px] relative translate-y-1">
+            <Image src="/white-drip.png" fill={true} alt="" />
+          </div>
+        </div>
         <Description />
         <Faq />
-        <Footer />
+        <div className="bg-opacity-90 shadow-md flex flex-col items-center justify-start w-screen bg-cover bg-[url('/bg-blunt.png')]">
+          <div className="w-full h-[68px] relative -translate-y-1">
+            <Image src="/white-drip-2.png" fill={true} alt="" />
+          </div>
+          <Footer />
+        </div>
       </div>
     </SWRConfig>
   );
