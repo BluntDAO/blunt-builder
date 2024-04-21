@@ -13,7 +13,7 @@ function BidRow({ bid, tight }: { bid: Bid; tight: boolean }) {
     <div
       className={twMerge(
         "flex flex-row   justify-between items-center w-full",
-        !tight && "py-3 border-b-2 border-transparent/10"
+        !tight && "py-3 border-b-2 border-transparent/10 text-white"
       )}
     >
       <WalletInfo address={bid.bidder} size="sm" />
