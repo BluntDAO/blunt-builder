@@ -1,5 +1,8 @@
-# Blunts.nft Auction Site
-Mint starting 4/20/2024 at 4:20PM EST
+![bluntswtf](https://github.com/BluntDAO/blunt-builder/assets/45281667/6dfc5bab-d0a4-4b57-8976-0ce2302ba9b5)
+# Blunts.nft 
+Auction Site
+Mint started 4/20/2024 at 4:20PM EST
+
 
 
 We are proud to announce that in YEAR 3: we are scaling the sesh., aka putting 5 on it at scale, aka the infinite blunt glitch, aka the 401k for blunts , aka bringing the rotation to the commons, aka a canna-network state, aka the treasury for your local sesh, aka the medicare for mary 🚀💸
