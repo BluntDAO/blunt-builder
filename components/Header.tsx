@@ -45,7 +45,7 @@ export default function Header() {
           </Link>
         </Button>
         
-          <Link href="https://nouns.build/" className="hidden md:block" >
+          <Link href="https://blunts.wtf/vote" className="hidden md:block" >
             <h6>DAO</h6>
           </Link>
           <Link href="https://forum.bluntdao.org/" className="hidden md:block">
