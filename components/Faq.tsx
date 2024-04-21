@@ -13,17 +13,15 @@ const faqItems: FaqItem[] = [
     content: (
       <>
         <p>
-          In the spirit of nouns.wtf, all our assets and tooling is open source and our traits are
-          under{" "}
-          <ExternalLink
-            href="https://creativecommons.org/public-domain/cc0/"
-          >CCO</ExternalLink>
-
-
+          In the spirit of nouns.wtf, all our assets and tooling is open source
+          and our traits are under{" "}
+          <ExternalLink href="https://creativecommons.org/public-domain/cc0/">
+            CCO
+          </ExternalLink>
         </p>
         <p>
-          BluntsDAO, JointsDAO, SpliffDAO in public domain for people to proliferate brand,
-          (hoggles)
+          BluntsDAO, JointsDAO, SpliffDAO in public domain for people to
+          proliferate brand, (hoggles)
         </p>
       </>
     ),
@@ -33,11 +31,11 @@ const faqItems: FaqItem[] = [
     content: (
       <>
         <p>
-          This is why we are building the unlimited sesh fund. A regular auction where the mint
-          depends on it hitting our “ounce” price of 0.042 ETH on base. All the money goes to
-          treasury, and NFT holders of the “OUNCES” NFT vote on incoming proposals (that come
-          from anyone) to fund their future sesh.
-
+          This is why we are building the unlimited sesh fund. A regular auction
+          where the mint depends on it hitting our “ounce” price of 0.042 ETH on
+          base. All the money goes to treasury, and NFT holders of the “OUNCES”
+          NFT vote on incoming proposals (that come from anyone) to fund their
+          future sesh.
         </p>
       </>
     ),
@@ -47,11 +45,10 @@ const faqItems: FaqItem[] = [
     content: (
       <>
         <ul className="list-disc list-inside pl-4">
+          <li>Forever reup our treasury with ounce for sesh</li>
           <li>
-            Forever reup our treasury with ounce for sesh
-          </li>
-          <li>
-            Ownership gets you to decide the future of expansion in future seshes
+            Ownership gets you to decide the future of expansion in future
+            seshes
           </li>
         </ul>
       </>
@@ -63,14 +60,14 @@ const faqItems: FaqItem[] = [
       <>
         <ul className="list-disc list-inside pl-4">
           <li>
-            Create a self sustaining treasury for unlimited joints, blunts, other stick based items based on NFT ownership
+            Create a self sustaining treasury for unlimited joints, blunts,
+            other stick based items based on NFT ownership
           </li>
           <li>
-            Build staple for culture and be a safety net and schelling points for stoners globally
+            Build staple for culture and be a safety net and schelling points
+            for stoners globally
           </li>
-          <li>
-            Build brand, gain revenue with other partnerships
-          </li>
+          <li>Build brand, gain revenue with other partnerships</li>
         </ul>
       </>
     ),
@@ -91,9 +88,6 @@ export default function Faq() {
             ))}
           </div>
         </div>
-      </div>
-      <div className="w-full h-[68px] relative -translate-y-1">
-        <Image src="/white-drip-2.png" fill={true} alt="" />
       </div>
     </div>
   );
