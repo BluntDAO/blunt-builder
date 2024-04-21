@@ -76,7 +76,7 @@ export default function Hero() {
           )}
         />
       </div>
-      <div className="flex flex-col gap-6 max-w-full overflow-hidden text-white">
+      <div className="flex flex-col gap-6 max-w-full overflow-hidden">
         <div className="flex items-center mb-4 gap-4">
           <Button
             variant="secondary"
@@ -96,7 +96,7 @@ export default function Hero() {
           </Button>
         </div>
 
-        <h1>OUNCE #{parseInt(tokenId, 16)}</h1>
+        <h1 className="text-white">OUNCE #{parseInt(tokenId, 16)}</h1>
 
         <CurrentAuction
           auctionInfo={auctionInfo}
@@ -209,7 +209,7 @@ const CurrentAuction = ({
     <div
       className={clsx("flex flex-col w-full gap-6 pb-3", hidden && "hidden")}
     >
-      <div className="flex flex-row flex-wrap md:justify-start w-full gap-4 ">
+      <div className="flex flex-row flex-wrap md:justify-start w-full gap-4 text-white">
         <div className="flex flex-col gap-2 md:pr-6 shrink-0 min-w-[165px]">
           <div className="font-light">
             {auctionOver ? "Winning Bid" : "Current Bid"}
