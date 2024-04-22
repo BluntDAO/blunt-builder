@@ -76,7 +76,13 @@ export default function Hero() {
           )}
         />
       </div>
-      <div className="flex flex-col gap-6 max-w-full overflow-hidden">
+      <div
+        style={{
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
+        }}
+        className="flex flex-col gap-6 max-w-full overflow-hidden bg-gradient-to-br from-transparent p-10 via-transparent to-transparent bg-opacity-60  rounded-2xl shadow-lg border border-gray-300"
+      >
         <div className="flex items-center mb-4 gap-4">
           <Button
             variant="secondary"
@@ -160,6 +166,7 @@ const EndedAuction = ({
           <WalletInfo
             address={owner || ethers.constants.AddressZero}
             size="lg"
+            color="text-white"
           />
         </div>
       </div>

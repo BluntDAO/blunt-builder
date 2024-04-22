@@ -60,22 +60,34 @@ export default function Vote({
 
   return (
     <Layout>
-      <div className="text-2xl relative font-heading text-skin-muted">
+      <div className="text-2xl text-white relative font-heading">
         Governance
       </div>
 
-      <div className="h-full w-full wrapper focus:outline-none pt-4 break-words prose prose-skin prose-headings:font-heading lg:prose-xl max-w-none">
-        <MDXRemote {...descriptionSource} />
+      <div className="">
+        <h1 className="text-white mb-6">My OUNCE Governance</h1>
+        <p className="text-white">
+          Hold 1 OUNCE NFT to submit a transfer proposal to fund a sesh,
+          advanced the development or assist with operating{" "}
+          <a
+            className="mt-[6] text-blue-900"
+            target="_blank"
+            href="http://blunts.wtf/"
+            style={{ textDecoration: "none" }}
+          >
+            Blunts.wtf
+          </a>
+        </p>
       </div>
 
       <div className="border border-skin-stroke rounded-2xl py-6 sm:py-0 px-6 mt-6 flex flex-col sm:flex-row sm:items-center justify-between sm:h-32">
         <div className="sm:py-6 h-full">
-          <div className="font-heading text-2xl text-skin-muted">Treasury</div>
-          <div className="text-4xl font-bold font-heading mt-2 text-skin-base">
+          <div className="font-heading text-2xl text-white">Treasury</div>
+          <div className="text-4xl font-bold font-heading mt-2 text-white">
             Ξ {treasuryBalance ? formatTreasuryBalance(treasuryBalance) : "0"}
           </div>
         </div>
-        <div className="sm:w-1/3 mt-4 sm:mt-0 sm:border-l border-skin-stroke sm:pl-6 h-full flex items-center text-skin-muted">
+        <div className="sm:w-1/3 mt-4 sm:mt-0 sm:border-l border-skin-stroke sm:pl-6 h-full flex items-center text-white">
           This treasury exists for DAO participants to allocate resources for
           the long-term growth and prosperity of the project.
         </div>
@@ -83,7 +95,7 @@ export default function Vote({
 
       <div className="mt-12">
         <div className="flex items-center justify-between">
-          <div className="text-4xl font-heading text-skin-base">Proposals</div>
+          <div className="text-4xl font-heading text-white">Proposals</div>
           {userVotes && userVotes >= (currentThreshold || 0) ? (
             <Link
               href={"/create-proposal"}

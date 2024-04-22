@@ -8,18 +8,30 @@ import { Dialog, DialogContent, DialogHeader, DialogTrigger } from "../Dialog";
 import { twMerge } from "tailwind-merge";
 import WalletInfo from "../WalletInfo";
 
-function BidRow({ bid, tight }: { bid: Bid; tight: boolean }) {
+function BidRow({
+  bid,
+  tight,
+  whiteColor,
+}: {
+  bid: Bid;
+  tight: boolean;
+  whiteColor?: boolean;
+}) {
   return (
     <div
       className={twMerge(
         "flex flex-row   justify-between items-center w-full",
-        !tight && "py-3 border-b-2 border-transparent/10 text-white"
+        !tight && "py-3 border-b-2 border-transparent/10 text-black"
       )}
     >
-      <WalletInfo address={bid.bidder} size="sm" />
+      <WalletInfo
+        color={whiteColor ? "text-white" : "text-black"}
+        address={bid.bidder}
+        size="sm"
+      />
       <ExternalLink href={`${ETHERSCAN_BASEURL}/tx/${bid.transactionHash}`}>
         <div className="flex flex-row gap-2 items-center hover:opacity-70 transition-opacity">
-          <h6 className="text-white">
+          <h6 className={whiteColor ? "text-white" : "text-black"}>
             Ξ {formatNumber(utils.formatEther(bid.bidAmount || "0"), 3)}
           </h6>
           <Image
@@ -51,12 +63,12 @@ export default function BidHistory({
   return (
     <div className="flex flex-col items-center">
       {bids?.slice(0, numToShow).map((bid, i) => {
-        return <BidRow bid={bid} tight={false} key={i} />;
+        return <BidRow whiteColor bid={bid} tight={false} key={i} />;
       })}
       {(bids?.length ?? 0) > numToShow && (
         <Dialog>
           <DialogTrigger>
-            <h6 className="pt-3  text-white">
+            <h6 className="pt-3 text-center self-center  text-white">
               {title}
             </h6>
           </DialogTrigger>
@@ -76,7 +88,7 @@ export default function BidHistory({
                 </div>
               </div>
             </DialogHeader>
-            <div className="flex flex-col gap-6 p-6 overflow-y-auto">
+            <div className="flex  flex-col gap-6 p-6 overflow-y-auto">
               {bids?.map((bid, i) => <BidRow bid={bid} tight={true} key={i} />)}
             </div>
           </DialogContent>

@@ -24,8 +24,8 @@ export default function Header() {
   });
 
   return (
-    <div className="flex items-center justify-between w-full px-4 md:px-10 py-2 h-[80px] gap-2">
-      <div className="flex gap-4 items-center text-white">
+    <div className="flex max-w-[1400px] items-center justify-between w-full px-4 md:px-10 py-2 h-[80px] gap-2">
+      <div className="flex max-w-[1400px] gap-4 items-center text-white">
         <Link href="/">
           <Image src="/foggles-white.svg" width={80} height={30} alt="Green" />
         </Link>
