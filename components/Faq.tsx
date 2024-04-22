@@ -79,7 +79,6 @@ export default function Faq() {
     <div className="flex flex-col w-full">
       <div className="bg-white w-full flex justify-center py-8 flex-col items-center">
         <div className="max-w-[754px] px-6 w-full flex flex-col gap-8 [&>p]:text-secondary bg-white">
-          <h2 className="md:px-4 pt-8">More Info:</h2>
           <div className="flex flex-col gap-8 md:gap-4 w-full">
             {faqItems.map((item, i) => (
               <FaqElement title={item.title} key={i}>

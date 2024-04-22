@@ -16,6 +16,7 @@ interface WalletInfoProps {
   hideAddress?: boolean;
   disableEns?: boolean;
   size: "sm" | "lg";
+  color?: string;
 }
 
 export default function WalletInfo({
@@ -24,6 +25,7 @@ export default function WalletInfo({
   hideAddress,
   disableEns,
   size,
+  color,
 }: WalletInfoProps) {
   const { data: ensNameResp } = useEnsName(address);
   const { data: ensAvatarResp } = useEnsAvatar(address);
@@ -83,9 +85,9 @@ export default function WalletInfo({
         ))}
       {!hideAddress &&
         (size == "sm" ? (
-          <h6 className="text-white">{name}</h6>
+          <h6 className={color}>{name}</h6>
         ) : (
-          <h3 className="text-white">{name}</h3>
+          <h3 className={color}>{name}</h3>
         ))}
     </div>
   );
