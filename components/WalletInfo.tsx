@@ -81,7 +81,12 @@ export default function WalletInfo({
             seed={jsNumberForAddress(address ?? zeroAddress)}
           />
         ))}
-      {!hideAddress && (size == "sm" ? <h6>{name}</h6> : <h3>{name}</h3>)}
+      {!hideAddress &&
+        (size == "sm" ? (
+          <h6 className="text-white">{name}</h6>
+        ) : (
+          <h3 className="text-white">{name}</h3>
+        ))}
     </div>
   );
 }

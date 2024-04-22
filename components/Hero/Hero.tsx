@@ -148,15 +148,15 @@ const EndedAuction = ({
         )}
       >
         <div className="flex flex-col gap-2 shrink-0 min-w-[165px] md:pr-6">
-          <div className="font-light">Winning Bid</div>
-          <h3>
+          <div className="font-light text-white">Winning Bid</div>
+          <h3 className="text-white">
             {auctionData
               ? `Ξ ${formatNumber(utils.formatEther(auctionData.amount || "0"), 3)}`
               : "n/a"}
           </h3>
         </div>
         <div className="flex flex-col gap-2">
-          <div className="font-light">Held by</div>
+          <div className="font-light text-white">Held by</div>
           <WalletInfo
             address={owner || ethers.constants.AddressZero}
             size="lg"
