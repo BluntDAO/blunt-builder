@@ -92,9 +92,9 @@ export default function Header() {
         </svg>
       </button>
       <div
-        className={`md:hidden absolute top-[170px] pt-5 pb-8 left-0 right-0 bg-gray-500 bg-opacity-90 shadow-md rounded-t-lg rounded-b-lg transition-all duration-500 z-10 ease-in-out ${openMobileModal ? "block" : "hidden"}`}
+        className={`md:hidden absolute top-[130px] pt-5 pb-8 left-0 right-0 bg-gray-500 bg-opacity-90 shadow-md rounded-t-lg rounded-b-lg transition-all duration-500 z-10 ease-in-out ${openMobileModal ? "block" : "hidden"}`}
       >
-        <div className="flex flex-col gap-4 justify-start items-center text-center w-full text-white">
+        <div className="flex flex-col gap-4 justify-start items-center  text-center w-full text-white">
           <Button variant="outline" size="tight" className="text-white">
             <Link
               href={`${ETHERSCAN_BASEURL}/tokenholdings?a=${addresses?.treasury}`}

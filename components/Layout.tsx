@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-[url('/bg-layout.png')] text-skin-base min-h-screen flex items-center justify-around">
       <div className="max-w-[1400px] relative flex-col min-h-screen items-center justify-between">
-        <div className="sticky top-0">
+        <div className="sticky top-0 z-10">
           <Header />
         </div>
         <div className="min-h-screen">
