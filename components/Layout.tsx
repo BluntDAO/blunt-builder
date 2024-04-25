@@ -4,7 +4,7 @@ import Header from "./Header";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="bg-cover bg-[url('/bg-blunt.png')] text-skin-base min-h-screen flex items-center justify-around">
+    <div className="bg-[url('/bg-layout.png')] text-skin-base min-h-screen flex items-center justify-around">
       <div className="max-w-[1400px] relative flex-col min-h-screen items-center justify-between">
         <div className="sticky top-0">
           <Header />
