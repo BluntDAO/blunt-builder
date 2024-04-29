@@ -83,22 +83,22 @@ export default function ProposalComponent() {
         <div className="flex items-baseline">
           <Link
             href="/vote"
-            className="flex items-center border border-skin-stroke hover:bg-skin-muted rounded-full p-2 mr-4"
+            className="flex items-center border border-skin-stroke hover:scale-1 rounded-full p-2 mr-4"
           >
-            <ArrowLeftIcon className="h-4" />
+            <ArrowLeftIcon className="h-4 text-white" />
           </Link>
 
           <div className="">
             <div className="flex items-center">
-              <div className="font-heading text-2xl text-skin-muted mr-4 break-words">
+              <div className="font-heading text-2xl text-white mr-4 break-words">
                 Proposal {proposalNumber}
               </div>
               <ProposalStatus proposal={proposal} />
             </div>
-            <div className="mt-2 text-5xl font-heading text-skin-base font-semibold">
+            <div className="mt-2 text-5xl font-heading text-gray-300 font-semibold">
               {getProposalName(proposal.description)}
             </div>
-            <div className="mt-4 text-2xl font-heading text-skin-muted">
+            <div className="mt-4 text-2xl font-heading text-gray-300">
               Proposed by{" "}
               <Link
                 href={`${ETHERSCAN_BASEURL}/address/${proposal.proposal.proposer}`}
@@ -144,39 +144,39 @@ export default function ProposalComponent() {
 
       <div className="items-center w-full grid sm:grid-cols-3 gap-4 mt-4">
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-skin-muted">Threshold</div>
+          <div className="font-heading text-xl text-gray-300">Threshold</div>
           <div className="text-right">
-            <div className="text-skin-muted">Current Threshold</div>
-            <div className="font-semibold">
+            <div className="text-gray-300">Current Threshold</div>
+            <div className="font-semibold text-white">
               {proposal.proposal.quorumVotes || 1} Quorum
             </div>
           </div>
         </div>
 
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-skin-muted">Ends</div>
+          <div className="font-heading text-xl text-gray-300">Ends</div>
           <div className="text-right">
-            <div className="text-skin-muted">{getTime(voteEnd)}</div>
-            <div className="font-semibold">{getDate(voteEnd)}</div>
+            <div className="text-gray-300">{getTime(voteEnd)}</div>
+            <div className="font-semibold text-white">{getDate(voteEnd)}</div>
           </div>
         </div>
 
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-skin-muted">Snapshot</div>
+          <div className="font-heading text-xl text-gray-300">Snapshot</div>
           <div className="text-right">
-            <div className="text-skin-muted">{getTime(voteStart)}</div>
-            <div className="font-semibold">{getDate(voteStart)}</div>
+            <div className="text-gray-300">{getTime(voteStart)}</div>
+            <div className="font-semibold text-white">{getDate(voteStart)}</div>
           </div>
         </div>
       </div>
 
       <div className="mt-12">
-        <div className="text-2xl font-heading text-skin-base font-bold">
+        <div className="text-2xl font-heading text-gray-300 font-bold">
           Description
         </div>
 
         <ReactMarkdown
-          className="prose prose-skin mt-4 prose-img:w-auto break-words max-w-[90vw] sm:max-w-[1000px]"
+          className="prose text-white mt-4 prose-img:w-auto break-words max-w-[90vw] sm:max-w-[1000px]"
           rehypePlugins={[rehypeRaw, rehypeSanitize]}
           remarkPlugins={[remarkGfm]}
         >
@@ -184,7 +184,7 @@ export default function ProposalComponent() {
         </ReactMarkdown>
       </div>
 
-      <div className="text-2xl font-heading text-skin-base mt-8 font-bold">
+      <div className="text-2xl font-heading text-gray-300 mt-8 font-bold">
         Proposed Transactions
       </div>
 
@@ -245,17 +245,17 @@ const ProposedTransactions = ({
     <div className="w-full">
       <div className="break-words">
         {linkIfAddress(target)}
-        <span>{`.${data?.functionName || "transfer"}(`}</span>
+        <span className="text-white">{`.${data?.functionName || "transfer"}(`}</span>
       </div>
       {!data?.decoded && !valueBN.isZero() && (
-        <div className="ml-4">{`${ethers.utils.formatEther(valueBN)} ETH`}</div>
+        <div className="ml-4 text-white">{`${ethers.utils.formatEther(valueBN)} ETH`}</div>
       )}
       {data?.decoded?.map((decoded, index) => (
         <div className="ml-4" key={index}>
           {linkIfAddress(decoded)}
         </div>
       ))}
-      <div>{")"}</div>
+      <div className="text-white">{")"}</div>
     </div>
   );
 };
