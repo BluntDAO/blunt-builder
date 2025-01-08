@@ -24,6 +24,7 @@ export default function Hero() {
     useCurrentAuctionInfo({
       auctionContract: contractInfo?.auction,
     });
+
   const { query, push } = useRouter();
 
   const currentTokenId = auctionInfo ? auctionInfo?.tokenId : "";
