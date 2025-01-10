@@ -126,7 +126,7 @@ export const PlaceBid = ({
         if (message.includes("INVALID_BID")) {
           return "Bid must be higher than current bid";
         }
-        return "Bid may be too low - bid must be higher than 0.01 ETH";
+        return "Bid may be too low - bid must be higher than 0.02 ETH";
       }
 
       return "Error placing bid. Please try again";
