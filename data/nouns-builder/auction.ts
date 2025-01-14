@@ -24,6 +24,7 @@ export type AuctionInfo = {
   endTime: number;
   settled: boolean;
   bids: Bid[];
+  minBidIncrement: string;
 };
 
 export type PreviousAuction = {
@@ -41,6 +42,10 @@ export const getCurrentAuction = async ({ address }: { address: string }) => {
       address,
     }).auction();
 
+  const minBidIncrement = await auction({
+    address,
+  }).minBidIncrement();
+
   const bids = await getBidHistory({ tokenId });
 
   return {
@@ -51,6 +56,7 @@ export const getCurrentAuction = async ({ address }: { address: string }) => {
     endTime,
     settled,
     bids,
+    minBidIncrement: minBidIncrement.toString(),
   } as AuctionInfo;
 };
 
