@@ -30,6 +30,7 @@
     "@zoralabs/zdk": "^2.2.0",
     "add": "^2.0.6",
     "axios": "^1.2.0",
+    "bignumber.js": "^9.1.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "deepmerge": "^4.2.2",

@@ -1,4 +1,5 @@
 import { BigNumber, utils } from "ethers";
+import BigNumberJS from 'bignumber.js';
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -22,11 +23,13 @@ export const PlaceBid = ({
   tokenId,
   hidden,
   onNewBid,
+  minBidIncrement,
 }: {
   highestBid?: string;
   auction?: string;
   tokenId?: string;
   hidden: boolean;
+  minBidIncrement: string;
   onNewBid: () => Promise<void>;
 }) => {
   const { isConnected } = useAccount();
@@ -34,10 +37,17 @@ export const PlaceBid = ({
   const debouncedBid = useDebounce(bid, 500);
 
   const { openConnectModal } = useConnectModal();
+  const minBidEth = (minBid: BigNumber): string => {
+    if (minBid.isZero()) {
+      return '0.01';
+    }
+  
+    const eth = utils.formatEther(BigNumber.from(minBid.toString()));
+    return new BigNumberJS(eth).toFixed(2, BigNumberJS.ROUND_CEIL);
+  };
 
-  const highestBidBN = BigNumber.from(highestBid);
-  const amountIncrease = highestBidBN.div("10");
-  const nextBidAmount = highestBidBN.add(amountIncrease);
+  // console.log(minBidEth(BigNumber.from(minBidIncrement)))
+  const minBidAmount = minBidEth(BigNumber.from(minBidIncrement));
 
   // Add validation state
   const [validationError, setValidationError] = useState<string>("");
@@ -47,7 +57,7 @@ export const PlaceBid = ({
     
     try {
       const bidAmount = parseFloat(bidValue);
-      const minBidAmount = parseFloat(utils.formatEther(nextBidAmount));
+      const minRequired = parseFloat(minBidAmount);
       const currentBidAmount = parseFloat(utils.formatEther(highestBid || "0"));
 
       if (isNaN(bidAmount) || bidAmount <= 0) {
@@ -60,8 +70,8 @@ export const PlaceBid = ({
       }
 
       // Must meet minimum increment
-      if (bidAmount < minBidAmount) {
-        return `Minimum bid increment is ${utils.formatEther(amountIncrease)} ETH`;
+      if (bidAmount < minRequired) {
+        return `Minimum bid required is ${minBidAmount} ETH`;
       }
 
       return "";
@@ -155,14 +165,14 @@ export const PlaceBid = ({
           <input
             value={bid}
             type="number"
-            min={utils.formatEther(nextBidAmount)}
+            min={minBidAmount}
             step="0.01"
             onChange={handleBidChange}
             className={clsx(
               "bg-primary h-[59px] rounded-[18px] px-6 py-4 focus:border-accent border-2 outline-none",
               (validationError || getError()) && "border-negative"
             )}
-            placeholder={`Ξ ${utils.formatEther(nextBidAmount)} or more`}
+            placeholder={`Ξ ${minBidAmount} or more`}
           />
           <div className="min-h-[20px]">
             {(validationError || getError()) && (
