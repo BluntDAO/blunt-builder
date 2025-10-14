@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import { useIsMounted } from "hooks/useIsMounted";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Hero from "../components/Hero/Hero";
 import { GetStaticPropsResult, InferGetStaticPropsType } from "next";
 import { serialize } from "next-mdx-remote/serialize";
@@ -22,6 +22,7 @@ import Image from "next/image";
 import Banner from "@/components/Banner";
 import Faq from "@/components/Faq";
 import Description from "@/components/Description";
+import React from "react";
 
 type MarkdownSource = MDXRemoteSerializeResult<Record<string, unknown>>;
 
@@ -36,11 +37,13 @@ export const getStaticProps = async (): Promise<
     faqSources: MarkdownSource[];
   }>
 > => {
-  // Get token and auction info
-  const tokenContract = process.env
-    .NEXT_PUBLIC_TOKEN_CONTRACT! as `0x${string}`;
+  // Add error handling for missing environment variable
+  const tokenContract = process.env.NEXT_PUBLIC_TOKEN_CONTRACT;
+  if (!tokenContract) {
+    throw new Error('NEXT_PUBLIC_TOKEN_CONTRACT environment variable is not set');
+  }
 
-  const addresses = await getAddresses({ tokenAddress: tokenContract });
+  const addresses = await getAddresses({ tokenAddress: tokenContract as `0x${string}` });
 
   const [contract, auction] = await Promise.all([
     getContractInfo({ address: tokenContract }),
@@ -105,6 +108,37 @@ export const getStaticProps = async (): Promise<
   };
 };
 
+function WarningMessage() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  if (!isVisible) return null;
+
+  return (
+    <div className="bg-yellow-200 text-yellow-800 p-4 rounded-md shadow-md w-full max-w-screen-md mx-auto mt-4">
+      <div className="flex justify-between items-center">
+        <span>
+          If this auction page is not working, go to the{" "}
+          <a
+            href="https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline text-blue-600"
+          >
+            Nouns.Builder
+          </a>{" "}
+          page to make a bid.
+        </span>
+        <button
+          onClick={() => setIsVisible(false)}
+          className="text-red-600 font-bold"
+        >
+          X
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export default function SiteComponent({
   tokenContract,
   tokenId,
@@ -133,6 +167,7 @@ export default function SiteComponent({
           <Banner />
           <Header />
           <Hero />
+          <WarningMessage />
           <div className="w-full h-[60px] relative translate-y-1">
             <Image src="/white-drip.png" fill={true} alt="" />
           </div>
