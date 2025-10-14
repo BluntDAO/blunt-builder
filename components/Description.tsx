@@ -21,7 +21,7 @@ export default function Description() {
             </div>
 
             {/* Feature Image */}
-            <div className="w-full max-w-[800px] mx-auto">
+            {/* <div className="w-full max-w-[800px] mx-auto">
               <Image
                 src="/blunts-1.jpg"
                 width={800}
@@ -29,7 +29,7 @@ export default function Description() {
                 className="rounded-3xl border-[4px] border-secondary shadow-xl w-full h-auto"
                 alt="BluntDAO Community"
               />
-            </div>
+            </div> */}
 
             {/* Objectives Grid */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-8">
@@ -74,7 +74,7 @@ export default function Description() {
                   </p>
                   <div className="mt-6 bg-accent/20 rounded-xl p-4 border-l-4 border-accent">
                     <p className="text-sm font-semibold">
-                      ✨ For 2+ years we've been doing BluntDAO (also JointsDAO & SpliffDAO) for free. 
+                      ✨ For 3+ years we've been doing BluntDAO (also JointsDAO & SpliffDAO) for free. 
                       Now in year 3: we are on the path to scale with unlimited sesh.
                     </p>
                   </div>
