@@ -24,6 +24,9 @@ export default function Hero() {
     useCurrentAuctionInfo({
       auctionContract: contractInfo?.auction,
     });
+
+  // console.log(auctionInfo)
+
   const { query, push } = useRouter();
 
   const currentTokenId = auctionInfo ? auctionInfo?.tokenId : "";
@@ -253,6 +256,7 @@ const CurrentAuction = ({
         tokenId={tokenId}
         hidden={auctionOver}
         onNewBid={revalidateAuctionInfo}
+        minBidIncrement={auctionInfo?.minBidIncrement || "0"}
       />
 
       {!auctionOver &&

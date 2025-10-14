@@ -1,4 +1,5 @@
 import { BigNumber, utils } from "ethers";
+import BigNumberJS from 'bignumber.js';
 import Image from "next/image";
 import { useState } from "react";
 import {
@@ -22,11 +23,13 @@ export const PlaceBid = ({
   tokenId,
   hidden,
   onNewBid,
+  minBidIncrement,
 }: {
   highestBid?: string;
   auction?: string;
   tokenId?: string;
   hidden: boolean;
+  minBidIncrement: string;
   onNewBid: () => Promise<void>;
 }) => {
   const { isConnected } = useAccount();
@@ -34,18 +37,73 @@ export const PlaceBid = ({
   const debouncedBid = useDebounce(bid, 500);
 
   const { openConnectModal } = useConnectModal();
+  const minBidEth = (minBid: BigNumber): string => {
+    if (minBid.isZero()) {
+      return '0.01';
+    }
+  
+    const eth = utils.formatEther(BigNumber.from(minBid.toString()));
+    return new BigNumberJS(eth).toFixed(2, BigNumberJS.ROUND_CEIL);
+  };
 
-  const { config, error } = usePrepareContractWrite({
+  // console.log(minBidEth(BigNumber.from(minBidIncrement)))
+  const minBidAmount = minBidEth(BigNumber.from(minBidIncrement));
+
+  // Add validation state
+  const [validationError, setValidationError] = useState<string>("");
+
+  const validateBid = (bidValue: string): string => {
+    if (!bidValue) return "";
+    
+    try {
+      const bidAmount = parseFloat(bidValue);
+      const minRequired = parseFloat(minBidAmount);
+      const currentBidAmount = parseFloat(utils.formatEther(highestBid || "0"));
+
+      if (isNaN(bidAmount) || bidAmount <= 0) {
+        return "Please enter a valid amount";
+      }
+
+      // Must be higher than current bid
+      if (bidAmount <= currentBidAmount) {
+        return `Bid must be higher than current bid (${currentBidAmount} ETH)`;
+      }
+
+      // Must meet minimum increment
+      if (bidAmount < minRequired) {
+        return `Minimum bid required is ${minBidAmount} ETH`;
+      }
+
+      return "";
+    } catch (err) {
+      console.error("Validation error:", err);
+      return "Invalid bid amount";
+    }
+  };
+
+  // Update bid handler
+  const handleBidChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newBid = e.target.value;
+    setBid(newBid);
+    setValidationError(validateBid(newBid));
+  };
+
+  const { config, error: prepareError } = usePrepareContractWrite({
     address: auction as Address,
     abi: AuctionABI,
     functionName: "createBid",
-    args: [BigNumber.from(tokenId || 1)],
+    args: [BigNumber.from(tokenId || "0")],
     overrides: {
-      value: utils.parseEther(debouncedBid || "0"),
+      value: debouncedBid ? utils.parseEther(debouncedBid) : undefined,
     },
-    enabled: !!auction && !!debouncedBid,
+    enabled: Boolean(
+      auction && 
+      debouncedBid &&
+      !validateBid(debouncedBid) // Only enable if validation passes
+    ),
   });
-  const { write, data } = useContractWrite(config);
+
+  const { write, data, error: writeError } = useContractWrite(config);
   const { isLoading } = useWaitForTransaction({
     hash: data?.hash,
     onError: () => {
@@ -58,25 +116,41 @@ export const PlaceBid = ({
     },
   });
 
-  const highestBidBN = BigNumber.from(highestBid);
-  const amountIncrease = highestBidBN.div("10");
-  const nextBidAmount = highestBidBN.add(amountIncrease);
-
   const getError = () => {
-    const minNextBid = utils.formatEther(nextBidAmount);
-    if (bid != "" && bid < minNextBid) {
-      return `Bid must be at least ${minNextBid}`;
+    // Show validation error first
+    if (validationError) return validationError;
+
+    // Handle contract errors
+    const error = prepareError || writeError;
+    if (error) {
+      const reason = (error as any)?.reason;
+      const message = (error as any)?.data?.message || '';
+      
+      console.error("Contract error:", { error, reason, message });
+
+      if (reason?.includes("insufficient funds") || message.includes("insufficient funds")) {
+        return "Insufficient funds for bid";
+      }
+
+      if (reason?.includes("execution reverted")) {
+        if (message.includes("INVALID_BID")) {
+          return "Bid must be higher than current bid";
+        }
+        return "Bid may be too low - bid must be higher than 0.021 ETH";
+      }
+
+      return "Error placing bid. Please try again";
     }
 
-    const reason = (error as any)?.reason;
-    if (!reason) return "";
-
-    if (reason.includes("insufficient funds"))
-      return "Error insufficient funds for bid";
-
-    if (debouncedBid && debouncedBid < utils.formatEther(nextBidAmount))
-      return "Error invalid bid";
+    return "";
   };
+
+  const isValidBid = Boolean(
+    bid && 
+    !validationError && 
+    !getError() && 
+    !isLoading
+  );
 
   return (
     <div className={clsx("flex flex-col gap-6", hidden && "hidden")}>
@@ -86,44 +160,49 @@ export const PlaceBid = ({
           <span className="font-bold text-white">Bridge to Base</span>
         </div>
       </ExternalLink>
-      <div className={clsx("flex flex-row flex-wrap gap-4 items-start ")}>
+      <div className={clsx("flex flex-row flex-wrap gap-4 items-start")}>
         <div className="shrink flex flex-col gap-1">
           <input
             value={bid}
             type="number"
-            onChange={(e) => setBid(e.target.value)}
+            min={minBidAmount}
+            step="0.01"
+            onChange={handleBidChange}
             className={clsx(
               "bg-primary h-[59px] rounded-[18px] px-6 py-4 focus:border-accent border-2 outline-none",
-              getError() != undefined && getError() != "" && "border-negative"
+              (validationError || getError()) && "border-negative"
             )}
-            placeholder={
-              nextBidAmount
-                ? `Ξ ${utils.formatEther(nextBidAmount)} or more`
-                : ""
-            }
+            placeholder={`Ξ ${minBidAmount} or more`}
           />
-          {error && <p className="caption text-negative">{getError()}</p>}
-        </div>
-        <div className="flex flex-col gap-1 justify-center items-center">
-          <Button
-            disabled={(!write || isLoading) && isConnected}
-            onClick={(e) => {
-              e.preventDefault();
-              if (isConnected) {
-                track("placeBidTriggered");
-                write?.();
-              } else {
-                openConnectModal?.();
-              }
-            }}
-          >
-            {isLoading ? (
-              <Image src="/spinner.svg" height={24} width={24} alt="spinner" />
-            ) : (
-              "Place bid"
+          <div className="min-h-[20px]">
+            {(validationError || getError()) && (
+              <p className="caption text-negative animate-fadeIn">
+                {validationError || getError()}
+              </p>
             )}
-          </Button>
+          </div>
         </div>
+        <Button
+          disabled={!isValidBid && isConnected}
+          onClick={(e) => {
+            e.preventDefault();
+            if (!isValidBid) {
+              return; // Prevent submission if bid is invalid
+            }
+            if (isConnected && write) {
+              track("placeBidTriggered");
+              write();
+            } else {
+              openConnectModal?.();
+            }
+          }}
+        >
+          {isLoading ? (
+            <Image src="/spinner.svg" height={24} width={24} alt="spinner" />
+          ) : (
+            "Place bid"
+          )}
+        </Button>
       </div>
     </div>
   );
