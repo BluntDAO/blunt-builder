@@ -18,11 +18,11 @@ export default function Banner() {
   return (
     <>
       <div className="w-full flex flex-col justify-center items-center">
-        <button
+          <button
           onClick={() => setOpen(true)}
           className="px-4 pt-2 pb-1 text-white font-bold bg-dark w-full justify-center items-center text-center flex hover:bg-dark/90 transition-colors cursor-pointer"
         >
-          Ounces the global sesh fund is turning into $BLUNT on SOLANA - Click
+          Ounces the global sesh fund is turning into $BLUNT on SOLANA - Migration starts in 2026 - Click
           for details
         </button>
         <div className="w-full h-[16px] relative mb-2 -translate-y-0.5">
@@ -48,7 +48,7 @@ export default function Banner() {
                 </p>
                 <p className="text-secondary">
                   We're transitioning from Ounces to <strong>$BLUNT</strong>{" "}
-                  tokens on the Solana blockchain. This is a major milestone for
+                  tokens on the Solana blockchain. Migration will start in 2026. This is a major milestone for
                   BluntDAO!
                 </p>
               </div>

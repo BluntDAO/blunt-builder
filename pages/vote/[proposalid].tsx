@@ -26,7 +26,7 @@ export default function ProposalComponent() {
   const { data: addresses } = useDAOAddresses({
     tokenContract: TOKEN_CONTRACT,
   });
-  const { data: proposals } = useGetAllProposals({
+  const { data: proposals, error: proposalsError } = useGetAllProposals({
     governorContract: addresses?.governor,
   });
 
@@ -40,14 +40,59 @@ export default function ProposalComponent() {
 
   const proposal = proposals?.find((x) => x.proposalId === proposalid);
 
-  if (!proposal)
+  if (proposalsError) {
     return (
       <Layout>
-        <div className="flex items-center justify-around mt-8">
-          <Image src={"/spinner.svg"} alt="spinner" width={30} height={30} />
+        <div className="bg-yellow-200 text-yellow-800 p-6 rounded-lg border-2 border-yellow-400 mt-8">
+          <p className="font-bold text-lg mb-2">⚠️ Proposals aren't loading</p>
+          <p className="mb-4">Devs are cooked, don't worry! Vote on proposals from here:</p>
+          <a
+            href="https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 hover:text-blue-800 underline font-semibold"
+          >
+            https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity
+          </a>
         </div>
       </Layout>
     );
+  }
+
+  if (proposals === undefined) {
+    return (
+      <Layout>
+        <div className="flex flex-col items-center justify-center mt-8 py-12 gap-4">
+          <Image src={"/spinner.svg"} alt="Loading" width={40} height={40} />
+          <p className="text-white text-lg">Loading proposal...</p>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (!proposal) {
+    return (
+      <Layout>
+        <div className="bg-skin-muted border border-skin-stroke rounded-2xl p-8 mt-8 text-center">
+          <p className="text-white text-xl font-heading mb-2">Proposal not found</p>
+          <p className="text-gray-300 mb-4">
+            The proposal you're looking for doesn't exist or couldn't be loaded.
+          </p>
+          <p className="text-gray-300 mb-4">
+            Devs are cooked, don't worry! View and vote on proposals from here:
+          </p>
+          <a
+            href="https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 underline font-semibold text-lg"
+          >
+            https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity
+          </a>
+        </div>
+      </Layout>
+    );
+  }
 
   const { forVotes, againstVotes, abstainVotes, voteEnd, voteStart } =
     proposal?.proposal || {};

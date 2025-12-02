@@ -53,7 +53,7 @@ export default function Footer() {
           target="_blank"
           className="text-white hover:brightness-75"
         >
-          Blunt Dao
+          BluntDAO
         </Link>
       </div>
     </div>

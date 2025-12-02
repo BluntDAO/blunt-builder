@@ -99,45 +99,64 @@ export const getProposalDetails = async ({
 };
 
 export const getProposals = async ({ address }: { address: `0x${string}` }) => {
-  const governorContract = governor({ address });
-  const filter = governorContract.filters.ProposalCreated(
-    null,
-    null,
-    null,
-    null,
-    null,
-    null,
-    null
-  );
+  try {
+    const governorContract = governor({ address });
+    const filter = governorContract.filters.ProposalCreated(
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    );
 
-  const events = await governorContract.queryFilter(filter);
-  const proposalResponse = await Promise.all(
-    events.map(async (event) => {
-      const { proposalId, targets, calldatas, description, descriptionHash } =
-        event.args as any;
+    const events = await governorContract.queryFilter(filter);
+    
+    if (!events || events.length === 0) {
+      return [];
+    }
 
-      const [proposal, state] = await Promise.all([
-        getProposalDetails({ address, proposalId }),
-        getProposalState({ address, proposalId }),
-      ]);
+    const proposalResponse = await Promise.all(
+      events.map(async (event) => {
+        try {
+          const { proposalId, targets, calldatas, description, descriptionHash } =
+            event.args as any;
 
-      // Get from array becuase of ethers naming collision
-      const values = (event.args as any)[2];
+          const [proposal, state] = await Promise.all([
+            getProposalDetails({ address, proposalId }),
+            getProposalState({ address, proposalId }),
+          ]);
 
-      return {
-        proposalId,
-        targets,
-        values,
-        calldatas,
-        description,
-        descriptionHash,
-        proposal,
-        state,
-      } as Proposal;
-    })
-  );
+          // Get from array becuase of ethers naming collision
+          const values = (event.args as any)[2];
 
-  return proposalResponse.sort(
-    (a, b) => b.proposal.timeCreated - a.proposal.timeCreated
-  );
+          return {
+            proposalId,
+            targets,
+            values,
+            calldatas,
+            description,
+            descriptionHash,
+            proposal,
+            state,
+          } as Proposal;
+        } catch (error) {
+          console.error(`Error processing proposal event:`, error);
+          // Return null for failed proposals, filter them out later
+          return null;
+        }
+      })
+    );
+
+    // Filter out any null proposals (failed to fetch)
+    const validProposals = proposalResponse.filter((p): p is Proposal => p !== null);
+
+    return validProposals.sort(
+      (a, b) => b.proposal.timeCreated - a.proposal.timeCreated
+    );
+  } catch (error) {
+    console.error("Error in getProposals:", error);
+    throw error;
+  }
 };
