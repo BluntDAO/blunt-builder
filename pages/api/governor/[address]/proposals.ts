@@ -11,18 +11,24 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const proposals = await getProposals({ address: address as `0x${string}` });
 
+    // Ensure we always return an array
+    const proposalsArray = Array.isArray(proposals) ? proposals : [];
+
     const ONE_DAY_IN_SECONDS = 60 * 60 * 24;
     res.setHeader(
       "Cache-Control",
       `s-maxage=60, stale-while-revalidate=${ONE_DAY_IN_SECONDS}`
     );
-    res.status(200).json(proposals);
+    res.status(200).json(proposalsArray);
   } catch (error) {
     console.error("Error fetching proposals:", error);
-    res.status(500).json({ 
-      error: "Failed to fetch proposals",
-      message: error instanceof Error ? error.message : "Unknown error"
-    });
+    // Return empty array instead of error object to prevent client-side errors
+    const ONE_DAY_IN_SECONDS = 60 * 60 * 24;
+    res.setHeader(
+      "Cache-Control",
+      `s-maxage=60, stale-while-revalidate=${ONE_DAY_IN_SECONDS}`
+    );
+    res.status(200).json([]);
   }
 };
 

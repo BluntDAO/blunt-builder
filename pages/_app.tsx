@@ -27,8 +27,22 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <SWRConfig
       value={{
-        fetcher: (resource, init) =>
-          fetch(resource, init).then((res) => res.json()),
+        fetcher: async (resource, init) => {
+          const res = await fetch(resource, init);
+          if (!res.ok) {
+            // If error response, return empty array for proposals endpoint, or throw for others
+            if (resource.includes('/proposals')) {
+              return [];
+            }
+            throw new Error(`Failed to fetch: ${res.statusText}`);
+          }
+          const data = await res.json();
+          // Ensure proposals endpoint always returns an array
+          if (resource.includes('/proposals') && !Array.isArray(data)) {
+            return [];
+          }
+          return data;
+        },
       }}
     >
       <WagmiConfig client={wagmiClient}>
@@ -43,7 +57,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
             <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-            <link rel="manifest" href="/site.webmanifest.json" />
+            <link rel="manifest" href="/site.webmanifest" />
             <meta property="og:type" content="website" />
             <meta property="og:url" content={`https://${process.env.NEXT_PUBLIC_VERCEL_URL}/`} />
             <meta

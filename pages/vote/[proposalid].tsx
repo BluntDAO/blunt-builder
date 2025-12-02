@@ -38,7 +38,9 @@ export default function ProposalComponent() {
     ? proposals.length - proposals.findIndex((x) => x.proposalId === proposalid)
     : 0;
 
-  const proposal = proposals?.find((x) => x.proposalId === proposalid);
+  // Ensure proposals is an array before using array methods
+  const proposalsArray = Array.isArray(proposals) ? proposals : undefined;
+  const proposal = proposalsArray?.find((x) => x.proposalId === proposalid);
 
   if (proposalsError) {
     return (
@@ -59,7 +61,7 @@ export default function ProposalComponent() {
     );
   }
 
-  if (proposals === undefined) {
+  if (proposals === undefined || !Array.isArray(proposals)) {
     return (
       <Layout>
         <div className="flex flex-col items-center justify-center mt-8 py-12 gap-4">
