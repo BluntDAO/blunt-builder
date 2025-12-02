@@ -75,19 +75,19 @@ export default function ProposalComponent() {
   if (!proposal) {
     return (
       <Layout>
-        <div className="bg-skin-muted border border-skin-stroke rounded-2xl p-8 mt-8 text-center">
-          <p className="text-white text-xl font-heading mb-2">Proposal not found</p>
-          <p className="text-gray-300 mb-4">
+        <div className="bg-yellow-200 text-yellow-800 p-6 rounded-lg border-2 border-yellow-400 mt-8">
+          <p className="font-bold text-lg mb-2">⚠️ Proposal not found</p>
+          <p className="mb-4">
             The proposal you're looking for doesn't exist or couldn't be loaded.
           </p>
-          <p className="text-gray-300 mb-4">
+          <p className="mb-4">
             Devs are cooked, don't worry! View and vote on proposals from here:
           </p>
           <a
             href="https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-400 hover:text-blue-300 underline font-semibold text-lg"
+            className="text-blue-600 hover:text-blue-800 underline font-semibold"
           >
             https://nouns.build/dao/base/0x8a613cb90ab3b318d4e46d09f260a84b788e206b/131?tab=activity
           </a>
@@ -142,10 +142,10 @@ export default function ProposalComponent() {
               </div>
               <ProposalStatus proposal={proposal} />
             </div>
-            <div className="mt-2 text-5xl font-heading text-gray-300 font-semibold">
+            <div className="mt-2 text-5xl font-heading text-white font-semibold">
               {getProposalName(proposal.description)}
             </div>
-            <div className="mt-4 text-2xl font-heading text-gray-300">
+            <div className="mt-4 text-2xl font-heading text-white">
               Proposed by{" "}
               <Link
                 href={`${ETHERSCAN_BASEURL}/address/${proposal.proposal.proposer}`}
@@ -191,9 +191,9 @@ export default function ProposalComponent() {
 
       <div className="items-center w-full grid sm:grid-cols-3 gap-4 mt-4">
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-gray-300">Threshold</div>
+          <div className="font-heading text-xl text-white">Threshold</div>
           <div className="text-right">
-            <div className="text-gray-300">Current Threshold</div>
+            <div className="text-white opacity-80">Current Threshold</div>
             <div className="font-semibold text-white">
               {proposal.proposal.quorumVotes || 1} Quorum
             </div>
@@ -201,24 +201,24 @@ export default function ProposalComponent() {
         </div>
 
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-gray-300">Ends</div>
+          <div className="font-heading text-xl text-white">Ends</div>
           <div className="text-right">
-            <div className="text-gray-300">{getTime(voteEnd)}</div>
+            <div className="text-white opacity-80">{getTime(voteEnd)}</div>
             <div className="font-semibold text-white">{getDate(voteEnd)}</div>
           </div>
         </div>
 
         <div className="w-full border border-skin-stroke rounded-xl p-6 flex justify-between items-center sm:items-baseline">
-          <div className="font-heading text-xl text-gray-300">Snapshot</div>
+          <div className="font-heading text-xl text-white">Snapshot</div>
           <div className="text-right">
-            <div className="text-gray-300">{getTime(voteStart)}</div>
+            <div className="text-white opacity-80">{getTime(voteStart)}</div>
             <div className="font-semibold text-white">{getDate(voteStart)}</div>
           </div>
         </div>
       </div>
 
       <div className="mt-12">
-        <div className="text-2xl font-heading text-gray-300 font-bold">
+        <div className="text-2xl font-heading text-white font-bold">
           Description
         </div>
 
@@ -231,7 +231,7 @@ export default function ProposalComponent() {
         </ReactMarkdown>
       </div>
 
-      <div className="text-2xl font-heading text-gray-300 mt-8 font-bold">
+      <div className="text-2xl font-heading text-white mt-8 font-bold">
         Proposed Transactions
       </div>
 
